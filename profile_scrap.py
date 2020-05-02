@@ -22,7 +22,7 @@ options.add_argument("--start-maximized")
 
 # In[3]:
 
-def do_scrape():
+def do_scrape(profile_link):
 
     browser = webdriver.Chrome('chromedriver.exe',chrome_options=options)
 
@@ -50,7 +50,7 @@ def do_scrape():
     fullLink = 'https://www.linkedin.com' + visitingProfileID
     browser.get(fullLink)
 
-    link = 'https://www.linkedin.com/in/dilusha-dasanayaka-446637113/'
+    link = profile_link
     browser.get(link)
 
     SCROLL_PAUSE_TIME = 1
@@ -105,10 +105,10 @@ def do_scrape():
 
 
     ###aboutme Section
-    aboutme_div = soup.find('div', {'class': 'profile-detail'})
-    aboutme_loc = aboutme_div.find('div', {'class': 'pv-oc ember-view'})
-    aboutme_section = aboutme_loc.find('p')
-    aboutme = aboutme_section.find('span').get_text().strip()
+    # aboutme_div = soup.find('div', {'class': 'profile-detail'})
+    # aboutme_loc = aboutme_div.find('div', {'class': 'pv-oc ember-view'})
+    # aboutme_section = aboutme_loc.find('p')
+    # aboutme = aboutme_section.find('span').get_text().strip()
 
 
     # In[37]:
@@ -159,21 +159,24 @@ def do_scrape():
             if edu_sectionlist:
                 if len(edu_sectionlist) > 0:
                     educationp = edu_sectionlist[0].find_all('p')
-                    educationspan = educationp[1].find_all('span')
-                    education1 = educationspan[1].get_text().strip()
-                    edu_ls.append(education1)
+                    if len(educationp) > 1:
+                        educationspan = educationp[1].find_all('span')
+                        education1 = educationspan[1].get_text().strip()
+                        edu_ls.append(education1)
 
                 if len(edu_sectionlist) > 1:
                     educationp = edu_sectionlist[1].find_all('p')
-                    educationspan = educationp[1].find_all('span')
-                    education2 = educationspan[1].get_text().strip()
-                    edu_ls.append(education2)
+                    if len(educationp) > 1:
+                        educationspan = educationp[1].find_all('span')
+                        education2 = educationspan[1].get_text().strip()
+                        edu_ls.append(education2)
 
                 if len(edu_sectionlist) > 2:
                     educationp = edu_sectionlist[2].find_all('p')
-                    educationspan = educationp[1].find_all('span')
-                    education3 = educationspan[1].get_text().strip()
-                    edu_ls.append(education3)
+                    if len(educationp) > 1:
+                        educationspan = educationp[1].find_all('span')
+                        education3 = educationspan[1].get_text().strip()
+                        edu_ls.append(education3)
     #print(edu_ls)
 
 

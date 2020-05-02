@@ -3,10 +3,13 @@ from model import get_suggestions
 
 ##############3333
 ###### scrape user details
-scraped_record = do_scrape()
+scraped_record = do_scrape("https://www.linkedin.com/in/savindi/")
 
 print("****** Information was collected ****************")
 print(scraped_record)
 
 print("**************** Suggested areas are: ******************")
-print(get_suggestions(scraped_record))
+suggestions = get_suggestions(scraped_record)[0]
+
+if len(suggestions) > 0:
+    print(suggestions[0])
