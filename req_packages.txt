@@ -1,0 +1,8 @@
+requests
+selenium
+bs4
+lxml
+
+
+pip install -U scikit-fuzzy
+matplotlib
