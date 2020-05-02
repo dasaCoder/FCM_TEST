@@ -1,8 +1,8 @@
-requests
-selenium
-bs4
-lxml
+pip install requests
+pip install selenium
+pip install bs4
+pip install lxml
 
 
 pip install -U scikit-fuzzy
-matplotlib
+pip install matplotlib
